@@ -66,6 +66,13 @@ export default class App extends Component {
   });
  };
 
+ sendNotification(msg) {
+  PushNotification.localNotification({
+    title: "CRF Notification",
+    message: msg,
+  });
+ }
+
  async componentWillMount() {
     const { identifier, uuid } = this.state;
     //
@@ -122,10 +129,7 @@ export default class App extends Component {
     this.regionDidEnterEvent = Beacons.BeaconsEventEmitter.addListener(
       'regionDidEnter',
       (data) => {
-        PushNotification.localNotification({
-          title: "My Notification Title",
-          message: "My Notification Message",
-        });
+        this.sendNotification('regionDidEnter');
         console.log('monitoring - regionDidEnter data: ', data);
         this.setState({ regionEnterDatasource: this.state.regionEnterDatasource.cloneWithRows([{ identifier:data.identifier, uuid:data.uuid, minor:data.minor, major:data.major }]) });
       }
@@ -134,6 +138,7 @@ export default class App extends Component {
     this.regionDidExitEvent = Beacons.BeaconsEventEmitter.addListener(
       'regionDidExit',
       ({ identifier, uuid, minor, major }) => {
+        this.sendNotification('regionDidExit');
         console.log('monitoring - regionDidExit data: ', { identifier, uuid, minor, major });
        this.setState({ regionExitDatasource: this.state.regionExitDatasource.cloneWithRows([{ identifier, uuid, minor, major }]) });
       }
