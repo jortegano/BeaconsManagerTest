@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "react": "16.2.0",
-    "react-native": "0.53.3"
+    "react-native": "0.53.3",
+    "react-native-beacons-manager": "https://github.com/MacKentoch/react-native-beacons-manager.git",
+    "react-native-push-notification": "3.0.2"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",
