@@ -58,5 +58,7 @@
 	<false/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Beacons usage</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Beacons usage</string>
 </dict>
 </plist>
